@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/predict_style.css') }}">
+     <!-- <link rel="stylesheet" href="predict_style.css"> -->
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Heart Disease Prediction</h1>  
+            <div class="back-home">
+                <a href="/" class="btn">Home</a>
+            </div>
+        </div>
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" step="any" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="sex">Sex</label>
+                <input type="number" step="any" id="sex" name="sex" required>
+            </div>
+            <div class="form-group">
+                <label for="cp">Chest Pain Type (cp)</label>
+                <input type="number" step="any" id="cp" name="cp" required>
+            </div>
+            <div class="form-group">
+                <label for="trestbps">Resting Blood Pressure (trestbps)</label>
+                <input type="number" step="any" id="trestbps" name="trestbps" required>
+            </div>
+            <div class="form-group">
+                <label for="chol">Cholesterol (chol)</label>
+                <input type="number" step="any" id="chol" name="chol" required>
+            </div>
+            <div class="form-group">
+                <label for="fbs">Fasting Blood Sugar (fbs)</label>
+                <input type="number" step="any" id="fbs" name="fbs" required>
+            </div>
+            <div class="form-group">
+                <label for="restecg">Resting ECG (restecg)</label>
+                <input type="number" step="any" id="restecg" name="restecg" required>
+            </div>
+            <div class="form-group">
+                <label for="thalach">Maximum Heart Rate Achieved (thalach)</label>
+                <input type="number" step="any" id="thalach" name="thalach" required>
+            </div>
+            <div class="form-group">
+                <label for="exang">Exercise-Induced Angina (exang)</label>
+                <input type="number" step="any" id="exang" name="exang" required>
+            </div>
+            <div class="form-group">
+                <label for="oldpeak">ST Depression (oldpeak)</label>
+                <input type="number" step="any" id="oldpeak" name="oldpeak" required>
+            </div>
+            <div class="form-group">
+                <label for="slope">Slope of ST Segment (slope)</label>
+                <input type="number" step="any" id="slope" name="slope" required>
+            </div>
+            <div class="form-group">
+                <label for="ca">Number of Major Vessels (ca)</label>
+                <input type="number" step="any" id="ca" name="ca" required>
+            </div>
+            <div class="form-group">
+                <label for="thal">Thalassemia (thal)</label>
+                <input type="number" step="any" id="thal" name="thal" required>
+            </div>
+            <button type="submit">Predict</button>
+            {% if result %}
+            <div class="result {% if 'has the condition' in result %}positive{% else %}negative{% endif %}">
+                {{ result }}
+            </div>
+            {% endif %}
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/predict_script.js') }}"></script>
+     <!-- <script src="predict_script.js"></script> -->
+</body>
+
+</html>
